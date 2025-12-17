@@ -1,0 +1,38 @@
+
+- v .h souboru nesmí být zásadně žádná definice (vymezení paměti pro proměnné nebo kód funkcí) nebo dokonce inicializace sdílených promenných
+- neměli by zde být žádné příkazy #include, kromě inkludování standardních .h souborů
+- každý .h soubor by měl na svém začátku obsahovat bezpečnostní mechanizmus proti opakovanému inkludování, zajištěný pomocí podmíněného překladu - viz. str. 98
+
+*** Doporučený obsah .h souboru ***
+
+Dokumentační část
+
+1. stejně, jako u odpovídajícího .c souboru 
+
+
+Podmíněný překlad proti opakovanému inkludování
+
+
+Definice symbolických konstant
+
+1. Symbolické konstanty o kterých se dá předpokládat, že budou využívány i v jiných modulech
+
+
+Definice maker s parametry
+
+1. platí totéž co u symbolických konstant
+
+
+Definice globálních typů
+
+1. Nové datové typy využitelné i v jiných modulech definujeme zásadně za pomocí typedef
+
+
+Deklarace globálních promenných příslušného .h modulu
+
+1. jsou zde označeny jako extern - exportují se do jiného modulu
+
+
+Úplné funkční prototypy globálních funkcí příslušného .c modulu
+
+1. jsou zde označeny jako extern - exportují se do jiného modulu 

@@ -1,0 +1,53 @@
+*** Doporučený obsah .c souboru ***
+
+Dokumentační část:
+
+1. jméno souboru a verze
+2. stručný popis modulu
+3. jméno autora a datum
+
+Všechny potřebné #include
+
+1. pouze soubory .h 'nikdy soubory .c' - využíváme výhod odděleného překladu
+2. nejdříve systémové soubory .h - #include <...>
+3. pak vlastní .h soubory - #include "..."
+
+Deklarace extern objektů
+
+1. pouze v tom případě, že nejsou v příslušném .h souboru spolupracujího modulu , čemuž dáváme zásadně přednost
+
+Definice globálních proměnných 
+
+1. jsou to proměnné (definované vně funkcí), které mají být sdíleny jinými moduly. Jejich deklarace označené jako extern vkládáme do příslušného .h souboru
+2. počet takto sdílených proměnných se snažíme omezit na co nejmenší míru
+
+Lokální #define 
+
+1. definice symbolických konstant a maker s parametry použitých pouze v tomto modulu
+2. pokud by byly velmi rozsáhlé (desítky řádek), lze je umístit do speciálního .h souboru - jen pro zvýšení přehlednosti
+
+Definice lokálních typů
+
+1. pro definici nového typu se zásadně používá operátor typedef
+2. pokud by byly velmi rozsáhlé, lze je umístit do speciálního .h souboru, podobně jako předchozí definice symbolických konstant
+
+Definice statických globálních proměnných 
+
+1. jsou to globální proměnné využívané více funkcemi výhradně tohoto modulu. Aby nebyly viditelné i v jiných modulech, mají modifikátor static 
+2. počet takto sdílených promenných se snažíme omezit na co nejmenší míru
+
+Úplné funkční prototypy lokálních funkcí
+
+Funkce main()
+
+1. uvádí se samozřejmě pouze v případě, že v daném modulu existuje
+
+Definice globálních funkcí
+
+1. jsou to funkce, které mohou být volány i z jiných modulů
+2. jejich úplné funknčí prototypy jsou uloženy v příslušném .h souboru
+
+Definice lokálních funkcí
+
+1. jsou to funkce, které mohou být volány pouze v tomto modulu. Aby nebyly viditelné mimo modul, mají modifikátor static
+2. jejich úplné funkční prototypy jsou uloženy v tomto .c souboru
